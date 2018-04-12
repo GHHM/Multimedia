@@ -23,10 +23,8 @@ int main(int argc, const char * argv[]) {
     string imageName ("./lena.jpg");
     
     Mat image;
-    Mat Gx, Gy, G;
+    Mat G;
     image = imread(imageName.c_str(),IMREAD_GRAYSCALE);
-    Gx = Mat::zeros(image.size(),image.type());   //copy
-    Gy = Mat::zeros(image.size(),image.type());   //copy
     G = Mat::zeros(image.size(),image.type());   //copy
     
     if(image.empty()){
@@ -37,8 +35,8 @@ int main(int argc, const char * argv[]) {
     int n = 3;
     int p = 1;
     //int p = (int)(n-n/2))-1;   //padding
-    
-    //make sobel filter
+
+    //make 3*3 sobel filter
     float sobelX[3][3] = {{-1,0,1},{-1,0,1},{-1,0,1}};
     float sobelY[3][3] = {{1,2,1},{0,0,0},{-1,-2,-1}};
     
@@ -47,7 +45,6 @@ int main(int argc, const char * argv[]) {
         for(int x=p;x<image.cols-p;x++){
             int gx =0;
             int gy =0;
-            //SobelX, SobelY
             for(int i=0;i<n;i++){
                 for(int j=0;j<n;j++){
                     gx = gx+sobelX[i][j]*image.at<uchar>(x+(i-p),y+(j-p));
@@ -55,7 +52,6 @@ int main(int argc, const char * argv[]) {
                 }
             }
             int g = (int)sqrt((gx*gx)+(gy*gy));
-           
             G.at<uchar>(x,y)=g;
         }
     }
