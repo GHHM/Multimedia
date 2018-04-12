@@ -6,6 +6,7 @@
 //  Copyright © 2018년 Hyemi Kim. All rights reserved.
 //
 
+//Derivative Filters
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -35,9 +36,9 @@ int main(int argc, const char * argv[]) {
     
     int n = 3;
     int p = 1;
-             //(int)(n-n/2))-1;   //padding
+    //int p = (int)(n-n/2))-1;   //padding
     
-    //make sobel x filter
+    //make sobel filter
     float sobelX[3][3] = {{-1,0,1},{-1,0,1},{-1,0,1}};
     float sobelY[3][3] = {{1,2,1},{0,0,0},{-1,-2,-1}};
     
