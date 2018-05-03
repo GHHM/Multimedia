@@ -57,8 +57,8 @@ int main(int argc, const char * argv[]) {
             newImage.at<Vec3b>(y,x)[2] = Cr;
             
             imageY.at<uchar>(y,x)=Y;
-            imageCr.at<uchar>(y,x)=Cb;
-            imageCb.at<uchar>(y,x)=Cr;
+            imageCr.at<uchar>(y,x)=Cr;
+            imageCb.at<uchar>(y,x)=Cb;
         }
     }
     
